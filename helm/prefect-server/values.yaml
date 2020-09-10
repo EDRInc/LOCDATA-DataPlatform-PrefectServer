@@ -42,7 +42,7 @@ global:
     # if postgres is not enabled, set external host.
     # NOTE: `servicePort` still defines port; and `existingSecret`
     # should still contain passwords.
-    postgresqlExternalHost: "{{ .Values.postgresqlExternalHost }}"
+    postgresqlExternalHost: postgresql-hostname.domain
 
   hasura:
     port: 3000
