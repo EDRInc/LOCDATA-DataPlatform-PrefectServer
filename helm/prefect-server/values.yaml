@@ -2,10 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-postgresqlDatabase: prefect
-postgresqlUsername: prefect
 postgresqlPassword: password
-postgresqlExternalHost: prefectpg.cvueoezjkuol.us-west-2.rds.amazonaws.com
 
 global:
   # namespace to deploy into (NB for the moment just Release.Namespace)
@@ -28,8 +25,8 @@ global:
   # Use these whether or not postgres is installed as dependency, as
   # they are used to build the postgres url.
   postgresql:
-    postgresqlDatabase: "{{ .Values.postgresqlDatabase }}"
-    postgresqlUsername: "{{ .Values.postgresqlUsername }}"
+    postgresqlDatabase: prefect
+    postgresqlUsername: prefect
     postgresqlPassword: "{{ .Values.postgresqlPassword }}"
   
     # see bitname/postgresql documentation; include at least keys:
