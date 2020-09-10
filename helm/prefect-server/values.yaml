@@ -2,6 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+postgresqlDatabase: prefect
+postgresqlUsername: prefect
+postgresqlPassword: password
+postgresqlExternalHost: prefectpg.cvueoezjkuol.us-west-2.rds.amazonaws.com
+
 global:
   # namespace to deploy into (NB for the moment just Release.Namespace)
   # namespace: prefect-server
@@ -23,9 +28,10 @@ global:
   # Use these whether or not postgres is installed as dependency, as
   # they are used to build the postgres url.
   postgresql:
-    postgresqlDatabase: prefect
-    postgresqlUsername: prefect
-
+    postgresqlDatabase: "{{ .Values.postgresqlDatabase }}"
+    postgresqlUsername: "{{ .Values.postgresqlUsername }}"
+    postgresqlPassword: "{{ .Values.postgresqlPassword }}"
+  
     # see bitname/postgresql documentation; include at least keys:
     # * `postgresql-password` for `postgresqlUsername` user,
     # * `postgresql-postgres-password` for admin user.
@@ -39,7 +45,7 @@ global:
     # if postgres is not enabled, set external host.
     # NOTE: `servicePort` still defines port; and `existingSecret`
     # should still contain passwords.
-    postgresqlExternalHost: ""
+    postgresqlExternalHost: "{{ .Values.postgresqlExternalHost }}"
 
   hasura:
     port: 3000
@@ -76,13 +82,13 @@ global:
         enabled: "true"
 
 # whether to use postgres dependency (true) or external postgres (false)
-postgresqlEnabled: true
+postgresqlEnabled: false
 
 # postgresql configuration
 # see https://hub.helm.sh/charts/bitnami/postgresql for all options
 postgresql:
   persistence:
-    enabled: true
+    enabled: false
     size: 8Gi
   initdbUser: postgres
   # initdbPassword: "$POSTGRESQL_POSTGRES_PASSWORD"
@@ -200,7 +206,7 @@ ui:
     type: ClusterIP
     # port set to global.ui.port
   ingress:
-    enabled: true
+    enabled: false
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
