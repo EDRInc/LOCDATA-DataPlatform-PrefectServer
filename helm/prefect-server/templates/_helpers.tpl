@@ -91,7 +91,7 @@ TODO: following is not working ... for the moment, hard-coded
   {{- $suffix := .Values.global.fqdnSuffix }}
   {{- printf "%s.%s.%s" $name $ns $suffix -}}
 {{- else -}}
-  {{- .Values.postgresqlExternalHost -}}
+  {{- .Values.global.postgresql.postgresqlExternalHost -}}
 {{- end -}}
 {{- end -}}
 
