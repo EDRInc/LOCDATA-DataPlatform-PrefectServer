@@ -2,7 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-postgresqlPassword: password
+postgresqlPassword: password 
+# PostgreSQL's Prefect user password (username is specified by global.postgresql.postgresqlUsername)
 
 global:
   # namespace to deploy into (NB for the moment just Release.Namespace)
@@ -34,15 +35,16 @@ global:
     # * `postgresql-postgres-password` for admin user.
     #
     # If not set, defaults to "{{ .Release.Name }}-postgresql", which
-    # is secret that bitnami/postgresql will create. For external 
-    # postgres, should either specify `existingSecret` or create
-    # default.
+    # is secret that bitnami/postgresql will create. 
+    # For external postgres, should either specify `existingSecret` 
+    # or create default using the provided password.
     existingSecret: null
     servicePort: 5432
     # if postgres is not enabled, set external host.
     # NOTE: `servicePort` still defines port; and `existingSecret`
     # should still contain passwords.
-    postgresqlExternalHost: postgresql-hostname.domain
+    postgresqlExternalHost:  "" 
+    # DNS for PostgreSQL database
 
   hasura:
     port: 3000
