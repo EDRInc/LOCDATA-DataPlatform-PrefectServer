@@ -105,7 +105,6 @@ pid
 
 # vs Code
 .vscode
-*.code-workspace
 
 # Mac OS
 *.DS_Store
@@ -121,9 +120,3 @@ node_modules/
 
 # profilng
 /prof
-
-# devspace (during helm chart development)
-devspace.yaml
-
-# Ignore DevSpace cache and log folder
-.devspace/
