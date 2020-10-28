@@ -21,6 +21,7 @@ global:
 
   # annotations to merge into all configs
   annotations: null
+
   # In accordance with https://hub.helm.sh/charts/bitnami/postgresql
   # Use these whether or not postgres is installed as dependency, as
   # they are used to build the postgres url.
@@ -28,6 +29,7 @@ global:
     postgresqlDatabase: prefect
     postgresqlUsername: prefect
     postgresqlPassword: "{{ .Values.postgresqlPassword }}"
+
     # see bitname/postgresql documentation; include at least keys:
     # * `postgresql-password` for `postgresqlUsername` user,
     # * `postgresql-postgres-password` for admin user.
@@ -102,6 +104,7 @@ agent:
     pullPolicy: IfNotPresent
   replicaCount: 1
   labels: "'[]'"
+
 hasura:
   nameOverride:
   image:
