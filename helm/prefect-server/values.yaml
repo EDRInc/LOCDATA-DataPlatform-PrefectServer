@@ -29,7 +29,7 @@ global:
     postgresqlDatabase: prefect
     postgresqlUsername: prefect
     postgresqlPassword: "{{ .Values.postgresqlPassword }}"
-  
+
     # see bitname/postgresql documentation; include at least keys:
     # * `postgresql-password` for `postgresqlUsername` user,
     # * `postgresql-postgres-password` for admin user.
@@ -43,7 +43,7 @@ global:
     # if postgres is not enabled, set external host.
     # NOTE: `servicePort` still defines port; and `existingSecret`
     # should still contain passwords.
-    postgresqlExternalHost:  "" 
+    postgresqlExternalHost:  "prefecttest01.cqx3etm3kdgx.us-west-1.rds.amazonaws.com" 
     # DNS for PostgreSQL database
 
   hasura:
@@ -97,6 +97,13 @@ postgresql:
       CREATE EXTENSION IF NOT EXISTS pgcrypto;
       CREATE EXTENSION IF NOT EXISTS "pg_trgm";
       SET TIME ZONE 'UTC';
+agent:
+  image: 
+    repository: prefecthq/prefect
+    version: 0.13.12-python3.8
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  labels: "'[]'"
 
 hasura:
   nameOverride:

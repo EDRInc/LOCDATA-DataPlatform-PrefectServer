@@ -1,5 +1,96 @@
 # Changelog
 
+## October 27, 2020 <Badge text="beta" type="success" />
+
+Released on October 27, 2020.
+
+### Fixes
+
+- Check for existence of agent before updating flow run agent - [#114](https://github.com/PrefectHQ/server/issues/114)
+
+## October 22, 2020 <Badge text="beta" type="success" />
+
+Released on October 22, 2020.
+
+### Enhancements
+
+- Update flow settings graphql logic to use supported API routes - [#113](https://github.com/PrefectHQ/server/pull/113)
+
+## October 14, 2020 <Badge text="beta" type="success" />
+
+Released on October 14, 2020.
+
+### Fixes
+
+- Allow for scheduling different parameters and different run labels at the exact same time - [#111](https://github.com/PrefectHQ/server/pull/111)
+
+## October 13, 2020 <Badge text="beta" type="success" />
+
+Released on October 13, 2020.
+
+### Features
+
+- Allow for scheduling changing labels on a per-flow run basis - [#109](https://github.com/PrefectHQ/server/pull/109)
+
+### Fixes
+
+- Fixes issue with Agent Config schema - [#107](https://github.com/PrefectHQ/server/pull/107)
+
+## September 24, 2020 <Badge text="beta" type="success" />
+
+Released on September 24, 2020.
+
+### Enhancements
+
+- Registering agents will now retrieve IDs from matching entries in order to prevent duplication - [#95](https://github.com/PrefectHQ/server/pull/95)
+- Add routes for setting run names - [#77](https://github.com/PrefectHQ/server/pull/77)
+
+### Fixes
+
+- Fix `name` field in `delete_agent` GraphQL resolver - [#95](https://github.com/PrefectHQ/server/pull/95)
+- Replace all uses of `database.models` with `prefect.models` - [#94](https://github.com/PrefectHQ/server/pull/94)
+
+### Database Migrations
+
+- Add task run name - [#77](https://github.com/PrefectHQ/server/pull/77)
+- Add index on `flow_run.agent_id` - [#93](https://github.com/PrefectHQ/server/pull/93)
+
+## September 15, 2020 <Badge text="beta" type="success" />
+
+Released on September 15, 2020.
+
+### Enhancements
+
+- Hasura metadata archives use the most recent alembic revision ID - [#78](https://github.com/PrefectHQ/server/pull/78)
+
+### Fixes
+
+- Fix and consolidate behavior for active schedules - [#86](https://github.com/PrefectHQ/server/issues/86)
+
+## September 11, 2020 <Badge text="beta" type="success" />
+
+Released on September 11, 2020.
+
+### Features
+
+- Add database structure and routes for persisting Agents - [#58](https://github.com/PrefectHQ/server/pull/58)
+
+### Enhancements
+
+- Add route for querying mapped children - [#73](https://github.com/PrefectHQ/server/pull/73)
+
+### Fixes
+
+- Fix __init__.py for deprecated API module - [#71](https://github.com/PrefectHQ/server/pull/71)
+
+### Breaking Changes
+
+- Remove `run_count` and `duration` columns - [#72](https://github.com/PrefectHQ/server/pull/72)
+
+### Database Migrations
+
+- Increase performance of state update triggers - [#72](https://github.com/PrefectHQ/server/pull/72)
+
 ## September 1, 2020 <Badge text="beta" type="success" />
 
 Released on September 1, 2020.

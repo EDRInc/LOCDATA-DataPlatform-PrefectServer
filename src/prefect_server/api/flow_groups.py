@@ -1,9 +1,7 @@
 from typing import List
 
+from prefect import api, models
 from prefect.serialization.schedule import ClockSchema
-
-from prefect import api
-from prefect_server.database import models
 from prefect.utilities.plugins import register_api
 
 
@@ -244,45 +242,5 @@ async def disable_lazarus_for_flow(flow_group_id: str) -> bool:
     """
     await api.flow_groups.update_setting(
         flow_group_id=flow_group_id, key="lazarus_enabled", value=False
-    )
-    return True
-
-
-@register_api("flow_groups.enable_version_locking")
-async def enable_version_locking_for_flow(flow_group_id: str) -> bool:
-    """
-    Enables version locking for a flow
-
-    Args:
-        - flow_group_id (str): the flow id
-
-    Returns:
-        - bool: if the update succeeded
-
-    Raises:
-        - ValueError: if flow ID is not provided or invalid
-    """
-    await api.flow_groups.update_setting(
-        flow_group_id=flow_group_id, key="version_locking_enabled", value=True
-    )
-    return True
-
-
-@register_api("flow_groups.disable_version_locking")
-async def disable_version_locking_for_flow(flow_group_id: str) -> bool:
-    """
-    Disables version locking for a flow
-
-    Args:
-        - flow_group_id (str): the flow id
-
-    Returns:
-        - bool: if the update succeeded
-
-    Raises:
-        - ValueError: if flow ID is not provided or invalid
-    """
-    await api.flow_groups.update_setting(
-        flow_group_id=flow_group_id, key="version_locking_enabled", value=False
     )
     return True
