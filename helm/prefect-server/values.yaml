@@ -206,7 +206,7 @@ apollo:
 ui:
   image: 
     repository: prefecthq/ui
-    version: "2020-08-20"
+    version: "2020-10-23"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
